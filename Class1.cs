@@ -92,7 +92,6 @@ namespace ProjetIA2022
             {
                 int xf = Form1.xfinal;
                 int yf = Form1.yfinal;
-                double H;
                 bool horizontal;
 
                 //DISTANCE ALGEBRIQUE
@@ -104,6 +103,9 @@ namespace ProjetIA2022
                 int dx = Math.Abs(x - xf);
                 int dy = Math.Abs(y - yf);
                 int nbDiagonales = Math.Min(dx, dy);
+                int nbNonDiagonales = Math.Abs(dx - dy);
+                int nbEtapes = nbDiagonales + nbNonDiagonales;
+
                 if (dx == Math.Max(dx, dy))
                 {
                     horizontal = true;
@@ -112,32 +114,40 @@ namespace ProjetIA2022
                 {
                     horizontal = false;
                 }
-                H = dx + dy;
 
-                if ((x <= xf && y < yf) || (x >= xf && y < yf))
+                if (x != xf)
                 {
-                    if (horizontal)
+                    if (y < yf)
                     {
-                        return 20 * nbDiagonales + (dx - dy) * 30;
+                        if (horizontal)
+                        {
+                            return (20 * nbDiagonales + nbNonDiagonales * 30);
+                        }
+                        else
+                        {
+                            return (20 * nbDiagonales + nbNonDiagonales * 21);
+                        }
+                    }
+                    else if (y > yf)
+                    {
+                        if (horizontal)
+                        {
+                            return (50 * nbDiagonales + nbNonDiagonales * 30);
+                        }
+                        else
+                        {
+                            return (50 * nbDiagonales + nbNonDiagonales * 50);
+                        }
                     }
                     else
                     {
-                        return 20 * nbDiagonales + (dy - dx) * 21;
+                        return nbEtapes * 30;
                     }
                 }
-                else if (y > yf && x < xf)
+                else
                 {
-                    return H * 50;
+                    return 0;
                 }
-                else if (y == yf)
-                {
-                    return H * 30;
-                }
-                else if (y < yf)
-                {
-                    return H * 21;
-                }
-                else return H * 0;
             }
         }
 

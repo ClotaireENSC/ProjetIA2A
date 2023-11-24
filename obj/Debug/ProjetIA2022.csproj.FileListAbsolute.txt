@@ -1,2 +1,12 @@
 C:\Users\cmardon001\ProjetIA2023 ENSC\ProjetIA2023 ENSC\obj\Debug\ProjetIA2022.csproj.AssemblyReference.cache
 C:\Users\cmardon001\ProjetIA2023 ENSC\ProjetIA2023 ENSC\obj\Debug\ProjetIA2022.csproj.SuggestedBindingRedirects.cache
+D:\ENSC\2A\SEMESTRE1\IA\ProjetIA2A\bin\Debug\ProjetIA2022.exe.config
+D:\ENSC\2A\SEMESTRE1\IA\ProjetIA2A\bin\Debug\ProjetIA2022.exe
+D:\ENSC\2A\SEMESTRE1\IA\ProjetIA2A\bin\Debug\ProjetIA2022.pdb
+D:\ENSC\2A\SEMESTRE1\IA\ProjetIA2A\obj\Debug\ProjetIA2022.csproj.AssemblyReference.cache
+D:\ENSC\2A\SEMESTRE1\IA\ProjetIA2A\obj\Debug\ProjetIA2022.Form1.resources
+D:\ENSC\2A\SEMESTRE1\IA\ProjetIA2A\obj\Debug\ProjetIA2022.Properties.Resources.resources
+D:\ENSC\2A\SEMESTRE1\IA\ProjetIA2A\obj\Debug\ProjetIA2022.csproj.GenerateResource.cache
+D:\ENSC\2A\SEMESTRE1\IA\ProjetIA2A\obj\Debug\ProjetIA2022.csproj.CoreCompileInputs.cache
+D:\ENSC\2A\SEMESTRE1\IA\ProjetIA2A\obj\Debug\ProjetIA2022.exe
+D:\ENSC\2A\SEMESTRE1\IA\ProjetIA2A\obj\Debug\ProjetIA2022.pdb

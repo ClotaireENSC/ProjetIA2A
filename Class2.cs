@@ -104,8 +104,6 @@ namespace ProjetIA2022
             }
             else
             {
-
-                double H;
                 int xf = 0;
                 int yf = 0;
 
@@ -125,31 +123,62 @@ namespace ProjetIA2022
                     yf = Form1.yfinal;
                 }
 
+                bool horizontal;
+
                 //DISTANCE ALGEBRIQUE
-                int dx = (x - xf) * (x - xf);
-                int dy = (y - yf) * (y - yf);
-                double dist_euclidienne = dx + dy;
+                // int dx = (x - xf) * (x - xf);
+                // int dy = (y - yf) * (y - yf);
+                // H = Math.Sqrt(dx + dy);
 
-                H = dist_euclidienne;
+                //DISTANCE MANHATTAN
+                int dx = Math.Abs(x - xf);
+                int dy = Math.Abs(y - yf);
+                int nbDiagonales = Math.Min(dx, dy);
+                int nbNonDiagonales = Math.Abs(dx - dy);
+                int nbEtapes = nbDiagonales + nbNonDiagonales;
 
+                if (dx == Math.Max(dx, dy))
+                {
+                    horizontal = true;
+                }
+                else
+                {
+                    horizontal = false;
+                }
 
-                if (x < xf && y < yf)
+                if (x != xf)
                 {
-                    return H * 21;
+                    if (y < yf)
+                    {
+                        if (horizontal)
+                        {
+                            return (20 * nbDiagonales + nbNonDiagonales * 30);
+                        }
+                        else
+                        {
+                            return (20 * nbDiagonales + nbNonDiagonales * 21);
+                        }
+                    }
+                    else if (y > yf)
+                    {
+                        if (horizontal)
+                        {
+                            return (50 * nbDiagonales + nbNonDiagonales * 30);
+                        }
+                        else
+                        {
+                            return (50 * nbDiagonales + nbNonDiagonales * 50);
+                        }
+                    }
+                    else
+                    {
+                        return nbEtapes * 30;
+                    }
                 }
-                else if (y > yf && x < xf)
+                else
                 {
-                    return H * 50;
+                    return 0;
                 }
-                else if (y == yf)
-                {
-                    return H * 30;
-                }
-                else if (y < yf)
-                {
-                    return H * 20;
-                }
-                else return H * 0;
             }
         }
 
