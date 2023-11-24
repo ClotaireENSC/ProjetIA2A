@@ -1,0 +1,2 @@
+C:\Users\cmardon001\ProjetIA2023 ENSC\ProjetIA2023 ENSC\obj\Debug\ProjetIA2022.csproj.AssemblyReference.cache
+C:\Users\cmardon001\ProjetIA2023 ENSC\ProjetIA2023 ENSC\obj\Debug\ProjetIA2022.csproj.SuggestedBindingRedirects.cache
