@@ -78,14 +78,67 @@ namespace ProjetIA2022
 
         public override double CalculeHCost()
         {
-            // variables disponibles
-            // x et y du noeud examiné
-            // Form1.xinitial Form1.yinitial   coordonnées du point de départ du bateai
-            // Form1.xfinal   Form1.yfinal     coordonnées du point d'arrivée du bateau
-            // matrice[x,y] indique le type de case  ( 0 si rien, -2 si obstacle)
+            // Variables disponibles :
+            // x et y du nœud examiné
+            // Form1.xinitial, Form1.yinitial : coordonnées du point de départ du bateau
+            // Form1.xfinal, Form1.yfinal : coordonnées du point d'arrivée du bateau
+            // Form1.matrice[x,y] : indique le type de case (0 si rien, -2 si obstacle)
 
-            return ( 0 );
-           
+            if (Form1.matrice[x, y] == -2)
+            {
+                return 1000000;
+            }
+            else
+            {
+                int xf = Form1.xfinal;
+                int yf = Form1.yfinal;
+                double H;
+                bool horizontal;
+
+                //DISTANCE ALGEBRIQUE
+                // int dx = (x - xf) * (x - xf);
+                // int dy = (y - yf) * (y - yf);
+                // H = Math.Sqrt(dx + dy);
+
+                //DISTANCE MANHATTAN
+                int dx = Math.Abs(x - xf);
+                int dy = Math.Abs(y - yf);
+                int nbDiagonales = Math.Min(dx, dy);
+                if (dx == Math.Max(dx, dy))
+                {
+                    horizontal = true;
+                }
+                else
+                {
+                    horizontal = false;
+                }
+                H = dx + dy;
+
+                if ((x <= xf && y < yf) || (x >= xf && y < yf))
+                {
+                    if (horizontal)
+                    {
+                        return 20 * nbDiagonales + (dx - dy) * 30;
+                    }
+                    else
+                    {
+                        return 20 * nbDiagonales + (dy - dx) * 21;
+                    }
+                }
+                else if (y > yf && x < xf)
+                {
+                    return H * 50;
+                }
+                else if (y == yf)
+                {
+                    return H * 30;
+                }
+                else if (y < yf)
+                {
+                    return H * 21;
+                }
+                else return H * 0;
+            }
         }
 
         public override string ToString()

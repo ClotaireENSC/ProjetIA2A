@@ -86,48 +86,74 @@ namespace ProjetIA2022
                 }
                 return lsucc;
             }
-            public override double CalculeHCost()
+        public override double CalculeHCost()
+        {
+            // Variables disponibles :
+            // x et y du nœud examiné
+            // bouee1 : booléen indiquant si on est déjà passé par la bouée 1
+            // bouee2 : booléen indiquant si on est déjà passé par la bouée 2
+            // Form1.xinitial, Form1.yinitial : coordonnées du point de départ du bateau
+            // Form1.xfinal, Form1.yfinal : coordonnées du point d'arrivée du bateau
+            // Form1.xbouee1, Form1.ybouee1 : coordonnées de la bouée 1
+            // Form1.xbouee2, Form1.ybouee2 : coordonnées de la bouée 2
+            // Form1.matrice[x,y] : indique le type de case (-1 si bouée, 0 si rien, -2 si obstacle)
+
+            if (Form1.matrice[x, y] == -2)
             {
-            // variables disponibles
-            // x et y du noeud examiné
-            // bouee1, booléen qui indique si on est déjà passé par la bouée 1.
-            // bouee2, booléen qui indique si on est déjà passé par la bouée 2.
-            // Form1.xinitial Form1.yinitial
-            // Form1.xfinal   Form1.yfinal
-            // Form1.xbouee1 et Form1.ybouee1 sont les coordonnées de la bouée 1.
-            // Form1.xbouee2 et Form1.ybouee2 sont les coordonnées de la bouée 2.
-            // matrice[x,y] indique le type de case  (-1 si bouée, 0 si rien, -2 si obstacle)
-
-            int xi = Form1.xinitial;
-            int yi = Form1.yinitial;
-            int xf = Form1.xfinal;
-            int yf = Form1.yfinal;
-            int H;
-
+                return 1000000;
+            }
+            else
             {
-                //DISTANCE DE CHEBYSHEV 
-                //int dx = Math.Abs(x - Form1.xfinal);
-                //int dy = Math.Abs(y - Form1.yfinal);
-                //H = Math.Max(dx, dy);
 
-                //DISTANCE DE MANHATTAN
-                int dx = Math.Abs(x - xf);
-                int dy = Math.Abs(y - yf);
-                H = (dx + dy);
+                double H;
+                int xf = 0;
+                int yf = 0;
+
+                if (!bouee1)
+                {
+                    xf = Form1.xbouee1;
+                    yf = Form1.ybouee1;
+                }
+                else if (!bouee2)
+                {
+                    xf = Form1.xbouee2;
+                    yf = Form1.ybouee2;
+                }
+                else
+                {
+                    xf = Form1.xfinal;
+                    yf = Form1.yfinal;
+                }
 
                 //DISTANCE ALGEBRIQUE
-                //int dx = (x-xf)*(x-xf);
-                //int dy = (y-yf)*(y-yf);
-                //H = dx + dy;
+                int dx = (x - xf) * (x - xf);
+                int dy = (y - yf) * (y - yf);
+                double dist_euclidienne = dx + dy;
+
+                H = dist_euclidienne;
 
 
-                Console.WriteLine(H);
+                if (x < xf && y < yf)
+                {
+                    return H * 21;
+                }
+                else if (y > yf && x < xf)
+                {
+                    return H * 50;
+                }
+                else if (y == yf)
+                {
+                    return H * 30;
+                }
+                else if (y < yf)
+                {
+                    return H * 20;
+                }
+                else return H * 0;
             }
+        }
 
-            return H;
-            }
-
-            public override string ToString()
+        public override string ToString()
             {
              string b1;
              string b2;
